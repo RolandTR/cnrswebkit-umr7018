@@ -215,6 +215,7 @@ Thème wordpress simple et personnalisable qui permet de donner une visibilité 
         'nombre_dactualites_page_actualite' => 10,
         'nombre_devenements_page_agenda' => 6,
         'nombre_decontacts_page_contact' => 6,
+		'masquer_evenements_termines_page_agenda' => 'a:0:{}',
         'pageliste_emploi' => 'a:0:{}',
         'pageliste_actualite' => 'a:0:{}',
         'pageliste_evenement' => 'a:0:{}',
@@ -466,12 +467,14 @@ class CnrswebkitListParams {
             $this->where = array(
                 'relation' => 'AND',
             );
-            $this->where[] = array(
-                'key' => 'date_de_fin',
-                'value' => strftime('%Y-%m-%d %H:%M:%S'),
-                'compare' => '>='
-            );
-            $this->orderby = 'date_de_debut ASC';
+			if ($cnrs_global_params->field('masquer_evenements_termines_page_agenda') == 1) {
+				$this->where[] = array(
+					'key' => 'date_de_fin',
+					'value' => strftime('%Y-%m-%d %H:%M:%S'),
+					'compare' => '>='
+				);
+			}
+            $this->orderby = 'date_de_debut DESC';
             break;
 
         case 'mediatheque':
