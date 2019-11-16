@@ -15,7 +15,7 @@
         $page_labo_url= get_permalink($cnrs_global_params->field('page_labo')['ID']);
         
         if ($page_labo_url) {
-            echo '<div class="bottomLabo"><a href="'. $page_labo_url . '">' . __('Learn more about our laboratory &hellip;', 'cnrswebkit') . '</a></div>';
+            echo '<div class="bottomLabo"><a href="'. $page_labo_url . '">' . __('Learn more about our laboratory ...', 'cnrswebkit') . '</a></div>';
         }
         ?>
         <div class="bottomLabo">
