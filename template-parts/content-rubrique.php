@@ -21,7 +21,7 @@ $current_item = new CnrswebkitRichData(get_the_ID());
         <?php
         $args = array(
             'sort_order' => 'asc',
-            'sort_column' => 'post_title',
+            'sort_column' => 'menu_order,post_title',
             'hierarchical' => 1,
             'exclude' => '',
             'include' => '',
