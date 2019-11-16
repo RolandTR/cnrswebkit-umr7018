@@ -210,16 +210,14 @@ function submit_contact_form() {
         ob_start();
         include(locate_template('template-parts/mailbody-contact.php'));
         $mail_body = ob_get_clean();
-//        $to = $contact_info->value('email');
-        $to = $email;
+        $to = $contact_info->value('email');
         $subject = $object;
         $body = $mail_body;
         $headers = [
             'MIME-Version: 1.0',
             'Content-Type: text/html; charset=UTF-8',
             'X-Mailer: PHP/' . phpversion(),
-//            'To: ' . $contact_info->value('prenom') . ' ' . $contact_info->value('nom') . ' <' . $contact_info->value('email') . '>',
-            'To: ' . $contact_info->value('prenom') . ' ' . $contact_info->value('nom') . ' <' . $email . '>',
+            'To: ' . $contact_info->value('prenom') . ' ' . $contact_info->value('nom') . ' <' . $contact_info->value('email') . '>',
             'From: ' . $prenom . ' ' . $nom . ' <' . $email . '>',
             'Reply-To: ' . $prenom . ' ' . $nom . ' <' . $email . '>'
         ];
