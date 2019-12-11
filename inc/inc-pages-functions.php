@@ -6,7 +6,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  *
  * @package Atos
  * @subpackage CNRS_Web_Kit
- * @since CNRS Web Kit 1.0
+ * @since CNRS Web Kit 0.3
  */
     
 require get_template_directory() . '/inc/cnrs-ajax.php';
@@ -650,7 +650,7 @@ class CnrswebkitPageItemsList {
     }
 
     public function has_filters() {
-        if (count($this->post_list_params->selectors) > 0) {
+        if ($this->post_list_params->selectors) {
             return true;
         }
         return false;
@@ -672,7 +672,7 @@ class CnrswebkitPageItemsList {
     }
 
     public function get_filters() {
-        if (count($this->post_list_params->selectors) > 0) {
+        if ($this->post_list_params->selectors) {
             return $this->post_list_params->selectors;
         }
         return false;
@@ -680,7 +680,7 @@ class CnrswebkitPageItemsList {
 
     public function get_html_filters($area = false) {
         global $cnrs_webkit_list_filtered; 
-        if (count($this->post_list_params->selectors) > 0) {
+        if ($this->post_list_params->selectors) {
             $filters = [];
             foreach ($this->post_list_params->selectors as $k => &$v) {
                 $filters[] = '<div>' . $v . '</div>';
@@ -1193,7 +1193,7 @@ function get_file_size_from_url($url) {
     return round(filesize($_SERVER['DOCUMENT_ROOT'] . parse_url($url, PHP_URL_PATH)) / 1048576, 2);
 }
 
-// Make cnrs_breadcrumb pluggable for possible override it in child theme
+// Make cnrs_breadcrumb pluggable for possible overriding in child theme
 
 if ( ! function_exists ( 'cnrs_breadcrumb' ) ) {
     function cnrs_breadcrumb() {

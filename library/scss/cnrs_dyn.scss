@@ -172,6 +172,9 @@ $white:#fff;
 * These two pieces of files must be identical in both places
 */ 
 
+/* TODO déplacer tous les paramètres $xxx situé dans cnrs_dyn.scss vers cnrs_custom.scss
+On pourrait ainsi limiter le temps de compilation en ne recompilant cnrs_custom.scss en preview  */
+
 /* Background Color */
 body {
 	background-color: $background_color;
@@ -2265,7 +2268,6 @@ body.page-template-templatepublication:not(.search-results){
                             }
                         }
                         .knowMorePub{
-                            color:$link_color;
                             margin-top:30px;
                             display:none;
                         }
